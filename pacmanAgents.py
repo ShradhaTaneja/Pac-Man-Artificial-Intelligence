@@ -51,14 +51,101 @@ class GreedyAgent(Agent):
         return random.choice(bestActions)
 
 class BFSAgent(Agent):
+    # testing
+    counter = 0
     # Initialization Function: Called one time when the game starts
     def registerInitialState(self, state):
         return;
 
     # GetAction Function: Called with every frame
     def getAction(self, state):
+        print '\t STARTING STATE IS : ', [state]
+        # queue initialised with base state
+        queue = [state]
+        bfs_traversal = []
+        node_child_mapping = {}
+        node_status_mapping = {}
+
+
+        while(queue):
+            # testing
+            if self.counter > 3:
+                print '\n\n FINAL DATA IS \n\n'
+                print '_'*10, ' queue ', '_'*10
+                print queue, '\n'
+
+                print '_'*10, ' bfs traversal ', '_'*10
+                print  bfs_traversal, '\n'
+
+                print '_'*10, ' node child mapping ', '_'*10
+                print node_child_mapping, '\n'
+
+                print '_'*10, ' node_status mapping ', '_'*10
+                print node_status_mapping, '\n'
+
+                print '_'*10, ' queue ', '_'*10
+                print queue
+
+                exit()
+            print self.counter, '<<<<< counter'
+            self.counter += 1
+            current_state = queue.pop(0)
+            print '\t CURRENT STATE IS : ', [current_state]
+            bfs_traversal.append(current_state)
+
+            if current_state.isLose():
+                node_status_mapping[current_state] = 'lose'
+            elif current_state.isWin():
+                node_status_mapping[current_state] = 'win'
+            else:
+                node_status_mapping[current_state] = None
+
+            node_child_mapping[current_state] = {}
+
+            # get all legal actions for pacman
+            legal = current_state.getLegalPacmanActions()
+
+            # get successor states for each action
+            for action in legal:
+                successor = current_state.generatePacmanSuccessor(action)
+
+
+                if successor == None:
+                    break
+                queue.append(successor)
+                score = scoreEvaluation(successor)
+                node_child_mapping[current_state][successor] = (action, score)
+
+
+            print '_'*10, ' queue ', '_'*10
+            print queue, '\n'
+
+            print '_'*10, ' bfs traversal ', '_'*10
+            print  bfs_traversal, '\n'
+
+            print '_'*10, ' node child mapping ', '_'*10
+            print node_child_mapping, '\n'
+
+            print '_'*10, ' node_status mapping ', '_'*10
+            print node_status_mapping, '\n'
+
+            print '_'*10, ' queue ', '_'*10
+            print queue
+
+
+        exit()
+        print 'shayad kuch thukaaa'
+
+
+
+        # SHRADHA RECENT CODE ABOVE THIS - 5 pm
+
         # TODO: write BFS Algorithm instead of returning Directions.STOP
         return Directions.STOP
+
+
+    def getCustomSuccessors(self, state, action):
+        return state.generatePacmanSuccessor(action)
 
 class DFSAgent(Agent):
     # Initialization Function: Called one time when the game starts
