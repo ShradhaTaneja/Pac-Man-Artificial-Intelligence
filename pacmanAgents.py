@@ -71,23 +71,23 @@ class BFSAgent(Agent):
             # testing
             if self.counter > 3:
                 print '\n\n FINAL DATA IS \n\n'
-                print '_'*10, ' queue ', '_'*10
+                print '*'*10, ' queue ', '*'*10
                 print queue, '\n'
 
-                print '_'*10, ' bfs traversal ', '_'*10
+                print '*'*10, ' bfs traversal ', '*'*10
                 print  bfs_traversal, '\n'
 
-                print '_'*10, ' node child mapping ', '_'*10
+                print '*'*10, ' node child mapping ', '*'*10
                 print node_child_mapping, '\n'
 
-                print '_'*10, ' node_status mapping ', '_'*10
+                print '*'*10, ' node*status mapping ', '*'*10
                 print node_status_mapping, '\n'
 
-                print '_'*10, ' queue ', '_'*10
-                print queue
+#                print '*'*10, ' queue ', '*'*10
+#                print queue
 
                 exit()
-            print self.counter, '<<<<< counter'
+            print '\n\n', '__'*20, self.counter, '________________________________________________________\n\n'
             self.counter += 1
             current_state = queue.pop(0)
             print '\t CURRENT STATE IS : ', [current_state]
@@ -128,9 +128,6 @@ class BFSAgent(Agent):
 
             print '_'*10, ' node_status mapping ', '_'*10
             print node_status_mapping, '\n'
-
-            print '_'*10, ' queue ', '_'*10
-            print queue
 
 
         exit()
