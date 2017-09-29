@@ -53,6 +53,8 @@ class GreedyAgent(Agent):
 class BFSAgent(Agent):
     # testing
     counter = 0
+    frames_counter = 0
+    successor_calls = 0
     # Initialization Function: Called one time when the game starts
     def registerInitialState(self, state):
         return;
@@ -60,47 +62,34 @@ class BFSAgent(Agent):
     # GetAction Function: Called with every frame
     def getAction(self, state):
         print '\t STARTING STATE IS : ', [state]
+        self.frames_counter += 1
         # queue initialised with base state
         queue = [state]
         bfs_traversal = []
         node_child_mapping = {}
         node_status_mapping = {}
 
+        base_action = {}
+        max_score = 0
+        max_state = ''
+        count = 0
 
+#   shradha
         while(queue):
             # testing
-            if self.counter > 3:
-                print '\n\n FINAL DATA IS \n\n'
-                print '*'*10, ' queue ', '*'*10
-                print queue, '\n'
+#            if self.counter > 3:
+#                print '\n\n FINAL DATA IS \n\n'
+#                print '*'*10, ' base actions ', '*'*10
+#                print base_action, '\n'
+#
+#                print '*'*10, ' max_score ', max_score, [max_state], '*'*10
+#                print base_action[max_state], '@@@@@@@@@@@@@@@@@@'
+#                exit()
+#            print '\n\n', '__'*20, self.counter, '________________________________________________________\n\n'
+#            self.counter += 1
 
-                print '*'*10, ' bfs traversal ', '*'*10
-                print  bfs_traversal, '\n'
-
-                print '*'*10, ' node child mapping ', '*'*10
-                print node_child_mapping, '\n'
-
-                print '*'*10, ' node*status mapping ', '*'*10
-                print node_status_mapping, '\n'
-
-#                print '*'*10, ' queue ', '*'*10
-#                print queue
-
-                exit()
-            print '\n\n', '__'*20, self.counter, '________________________________________________________\n\n'
-            self.counter += 1
             current_state = queue.pop(0)
-            print '\t CURRENT STATE IS : ', [current_state]
-            bfs_traversal.append(current_state)
-
-            if current_state.isLose():
-                node_status_mapping[current_state] = 'lose'
-            elif current_state.isWin():
-                node_status_mapping[current_state] = 'win'
-            else:
-                node_status_mapping[current_state] = None
-
-            node_child_mapping[current_state] = {}
+#            print '\t CURRENT STATE IS : ', [current_state]
 
             # get all legal actions for pacman
             legal = current_state.getLegalPacmanActions()
@@ -108,36 +97,106 @@ class BFSAgent(Agent):
             # get successor states for each action
             for action in legal:
                 successor = current_state.generatePacmanSuccessor(action)
-
-
                 if successor == None:
                     break
+                self.successor_calls += 1
+                count += 1
                 queue.append(successor)
                 score = scoreEvaluation(successor)
-                node_child_mapping[current_state][successor] = (action, score)
+
+                try:
+                    base_action[successor] = base_action[current_state]
+                except:
+                    base_action[successor] = action
+
+                if score > max_score:
+                    max_score = score
+                    max_state = successor
+
+#                print '*'*10, ' base actions ', '*'*10
+#                print base_action, '\n'
+#
+#                print '*'*10, ' max_score ', max_score, [max_state], '*'*10
+
+#        return base_action[max_state]
 
 
-            print '_'*10, ' queue ', '_'*10
-            print queue, '\n'
-
-            print '_'*10, ' bfs traversal ', '_'*10
-            print  bfs_traversal, '\n'
-
-            print '_'*10, ' node child mapping ', '_'*10
-            print node_child_mapping, '\n'
-
-            print '_'*10, ' node_status mapping ', '_'*10
-            print node_status_mapping, '\n'
-
-
-        exit()
-        print 'shayad kuch thukaaa'
-
-
-
-        # SHRADHA RECENT CODE ABOVE THIS - 5 pm
+#        exit()
+#
+#        while(queue):
+#            # testing
+#            if self.counter > 3:
+#                print '\n\n FINAL DATA IS \n\n'
+#                print '*'*10, ' queue ', '*'*10
+#                print queue, '\n'
+#
+#                print '*'*10, ' bfs traversal ', '*'*10
+#                print  bfs_traversal, '\n'
+#
+#                print '*'*10, ' node child mapping ', '*'*10
+#                print node_child_mapping, '\n'
+#
+#                print '*'*10, ' node*status mapping ', '*'*10
+#                print node_status_mapping, '\n'
+#
+##                print '*'*10, ' queue ', '*'*10
+##                print queue
+#
+#                exit()
+#            print '\n\n', '__'*20, self.counter, '________________________________________________________\n\n'
+#            self.counter += 1
+#            current_state = queue.pop(0)
+#            print '\t CURRENT STATE IS : ', [current_state]
+#            bfs_traversal.append(current_state)
+#
+#            if current_state.isLose():
+#                node_status_mapping[current_state] = 'lose'
+#            elif current_state.isWin():
+#                node_status_mapping[current_state] = 'win'
+#            else:
+#                node_status_mapping[current_state] = None
+#
+#            node_child_mapping[current_state] = {}
+#
+#            # get all legal actions for pacman
+#            legal = current_state.getLegalPacmanActions()
+#
+#            # get successor states for each action
+#            for action in legal:
+#                successor = current_state.generatePacmanSuccessor(action)
+#
+#
+#                if successor == None:
+#                    break
+#                queue.append(successor)
+#                score = scoreEvaluation(successor)
+#                node_child_mapping[current_state][successor] = (action, score)
+#
+#
+#            print '_'*10, ' queue ', '_'*10
+#            print queue, '\n'
+#
+#            print '_'*10, ' bfs traversal ', '_'*10
+#            print  bfs_traversal, '\n'
+#
+#            print '_'*10, ' node child mapping ', '_'*10
+#            print node_child_mapping, '\n'
+#
+#            print '_'*10, ' node_status mapping ', '_'*10
+#            print node_status_mapping, '\n'
+#
+#
+#        exit()
+#        print 'shayad kuch thukaaa'
+#
+#
+#
+#        # SHRADHA RECENT CODE ABOVE THIS - 5 pm
 
         # TODO: write BFS Algorithm instead of returning Directions.STOP
+        print self.successor_calls, 'sucessor_calls'
+        print self.frames_counter, 'frame counter'
+        return base_action[max_state]
         return Directions.STOP
 
 
