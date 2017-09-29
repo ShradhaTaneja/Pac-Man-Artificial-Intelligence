@@ -109,14 +109,83 @@ class BFSAgent(Agent):
         return base_action[max_state]
 
 class DFSAgent(Agent):
+    frame_counter = 0
+    frame_max = 7
     # Initialization Function: Called one time when the game starts
     def registerInitialState(self, state):
         return;
 
     # GetAction Function: Called with every frame
     def getAction(self, state):
-        # TODO: write DFS Algorithm instead of returning Directions.STOP
-        return Directions.STOP
+#        print '\t STARTING STATE IS : ', [state]
+
+        succ_counter = 0
+        succ_max = 10
+
+        self.frame_counter +=1
+        print 'frame : ', self.frame_counter
+        # stack initialised with base state
+        stack = [state]
+
+        # stores the main action for all the nodes
+        base_action = {}
+        max_score = 0
+        max_state = ''
+
+        while(stack):
+            current_state = stack.pop()
+
+            # get all legal actions for pacman
+            legal = current_state.getLegalPacmanActions()
+            if self.frame_counter == self.frame_max:
+                print 'legal actions : ', legal
+
+            # get successor states for each action
+            for action in legal:
+                print action
+                successor = current_state.generatePacmanSuccessor(action)
+                if succ_counter == succ_max :
+                    continue
+                if successor == None:
+                    break
+
+                    # append successor state in stack
+                stack.append(successor)
+                score = scoreEvaluation(successor)
+
+                try:
+                    base_action[successor] = base_action[current_state]
+                except:
+                    base_action[successor] = action
+
+                if self.frame_counter == self.frame_max:
+                    print 'max score = ', max_score
+                if score > max_score:
+                    max_score = score
+                    max_state = successor
+
+                succ_counter += 1
+#                if self.frame_counter == self.frame_max:
+#                    print 'action = ', action
+#                    print 'current score = ', score
+#                    print 'max score = ', max_score
+#            if self.counter == self.counter_max:
+#                print 'max     :', max_score
+#                print 'maxstate:', [max_state]
+#                print 'action  :', base_action[max_state]
+#                print '\n', '_' * 30, '\n'
+
+#        print self.successor_calls, 'sucessor_calls'
+#        print self.frames_counter, 'frame counter'
+#        print '', [max_state]
+#        print '->', max_state.isLose()
+#        print 'returned', base_action[max_state]
+
+        if self.frame_counter == self.frame_max:
+            print 'end'
+            #exit()
+        print '------------------returning', base_action[max_state]
+        return base_action[max_state]
 
 class AStarAgent(Agent):
     # Initialization Function: Called one time when the game starts
