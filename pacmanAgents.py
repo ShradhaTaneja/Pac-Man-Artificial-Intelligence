@@ -142,7 +142,6 @@ class DFSAgent(Agent):
 
             # get successor states for each action
             for action in legal:
-                print action
                 successor = current_state.generatePacmanSuccessor(action)
                 if succ_counter == succ_max :
                     continue
@@ -158,6 +157,7 @@ class DFSAgent(Agent):
                 except:
                     base_action[successor] = action
 
+                print action, score, max_score
                 if self.frame_counter == self.frame_max:
                     print 'max score = ', max_score
                 if score > max_score:
