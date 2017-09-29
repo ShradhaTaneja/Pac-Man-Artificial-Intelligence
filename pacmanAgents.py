@@ -61,35 +61,20 @@ class BFSAgent(Agent):
 
     # GetAction Function: Called with every frame
     def getAction(self, state):
-        print '\t STARTING STATE IS : ', [state]
+#        print '\t STARTING STATE IS : ', [state]
         self.frames_counter += 1
+        count = 0
+
         # queue initialised with base state
         queue = [state]
-        bfs_traversal = []
-        node_child_mapping = {}
-        node_status_mapping = {}
 
+        # stores the main action for all the nodes
         base_action = {}
         max_score = 0
         max_state = ''
-        count = 0
 
-#   shradha
         while(queue):
-            # testing
-#            if self.counter > 3:
-#                print '\n\n FINAL DATA IS \n\n'
-#                print '*'*10, ' base actions ', '*'*10
-#                print base_action, '\n'
-#
-#                print '*'*10, ' max_score ', max_score, [max_state], '*'*10
-#                print base_action[max_state], '@@@@@@@@@@@@@@@@@@'
-#                exit()
-#            print '\n\n', '__'*20, self.counter, '________________________________________________________\n\n'
-#            self.counter += 1
-
             current_state = queue.pop(0)
-#            print '\t CURRENT STATE IS : ', [current_state]
 
             # get all legal actions for pacman
             legal = current_state.getLegalPacmanActions()
@@ -101,6 +86,8 @@ class BFSAgent(Agent):
                     break
                 self.successor_calls += 1
                 count += 1
+
+                # append successor state in queue
                 queue.append(successor)
                 score = scoreEvaluation(successor)
 
@@ -109,99 +96,17 @@ class BFSAgent(Agent):
                 except:
                     base_action[successor] = action
 
+                print 'current : ', score
                 if score > max_score:
                     max_score = score
                     max_state = successor
 
-#                print '*'*10, ' base actions ', '*'*10
-#                print base_action, '\n'
-#
-#                print '*'*10, ' max_score ', max_score, [max_state], '*'*10
+                print 'max    :', max_score
+                print '\n', '_' * 30, '\n'
 
-#        return base_action[max_state]
-
-
-#        exit()
-#
-#        while(queue):
-#            # testing
-#            if self.counter > 3:
-#                print '\n\n FINAL DATA IS \n\n'
-#                print '*'*10, ' queue ', '*'*10
-#                print queue, '\n'
-#
-#                print '*'*10, ' bfs traversal ', '*'*10
-#                print  bfs_traversal, '\n'
-#
-#                print '*'*10, ' node child mapping ', '*'*10
-#                print node_child_mapping, '\n'
-#
-#                print '*'*10, ' node*status mapping ', '*'*10
-#                print node_status_mapping, '\n'
-#
-##                print '*'*10, ' queue ', '*'*10
-##                print queue
-#
-#                exit()
-#            print '\n\n', '__'*20, self.counter, '________________________________________________________\n\n'
-#            self.counter += 1
-#            current_state = queue.pop(0)
-#            print '\t CURRENT STATE IS : ', [current_state]
-#            bfs_traversal.append(current_state)
-#
-#            if current_state.isLose():
-#                node_status_mapping[current_state] = 'lose'
-#            elif current_state.isWin():
-#                node_status_mapping[current_state] = 'win'
-#            else:
-#                node_status_mapping[current_state] = None
-#
-#            node_child_mapping[current_state] = {}
-#
-#            # get all legal actions for pacman
-#            legal = current_state.getLegalPacmanActions()
-#
-#            # get successor states for each action
-#            for action in legal:
-#                successor = current_state.generatePacmanSuccessor(action)
-#
-#
-#                if successor == None:
-#                    break
-#                queue.append(successor)
-#                score = scoreEvaluation(successor)
-#                node_child_mapping[current_state][successor] = (action, score)
-#
-#
-#            print '_'*10, ' queue ', '_'*10
-#            print queue, '\n'
-#
-#            print '_'*10, ' bfs traversal ', '_'*10
-#            print  bfs_traversal, '\n'
-#
-#            print '_'*10, ' node child mapping ', '_'*10
-#            print node_child_mapping, '\n'
-#
-#            print '_'*10, ' node_status mapping ', '_'*10
-#            print node_status_mapping, '\n'
-#
-#
-#        exit()
-#        print 'shayad kuch thukaaa'
-#
-#
-#
-#        # SHRADHA RECENT CODE ABOVE THIS - 5 pm
-
-        # TODO: write BFS Algorithm instead of returning Directions.STOP
-        print self.successor_calls, 'sucessor_calls'
-        print self.frames_counter, 'frame counter'
+#        print self.successor_calls, 'sucessor_calls'
+#        print self.frames_counter, 'frame counter'
         return base_action[max_state]
-        return Directions.STOP
-
-
-    def getCustomSuccessors(self, state, action):
-        return state.generatePacmanSuccessor(action)
 
 class DFSAgent(Agent):
     # Initialization Function: Called one time when the game starts
