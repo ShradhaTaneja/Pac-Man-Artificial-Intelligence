@@ -188,12 +188,104 @@ class DFSAgent(Agent):
         print '------------------returning', base_action[max_state]
         return base_action[max_state]
 
+class priorityQueue():
+    def __init__(self):
+        self.items = []
+
+    def pop(self):
+        sorted_items = sorted(self.items, key = lambda x:x[1])
+        min_value = sorted_items.pop(0)
+        self.items = sorted_items
+        return min_value
+
+    def insert(self, value):
+        self.items.append(value)
+        return self.items
+
+    def get(self):
+        return self.items
+
+    def isEmpty(self):
+        return len(self.items) == 0
+
+    def len(self):
+        return len(self.items)
+
+    def getSorted(self):
+        return sorted(self.items, key = lambda x:x[1])
+
 class AStarAgent(Agent):
+    count = 0
     # Initialization Function: Called one time when the game starts
     def registerInitialState(self, state):
         return;
 
     # GetAction Function: Called with every frame
     def getAction(self, state):
+        s = 0
+        # stores the main action for all the nodes
+        base_action = {}
+        max_score = 0
+        max_state = ''
+
+#        if self.count > 3:
+#            print 'frame calls finished'
+#            print base_action[max_state]
+#            exit()
+
+        self.count += 1
+        print '-- call ', self.count
+
+        open_list = priorityQueue()
+        closed_list = priorityQueue()
+#        print open_list, closed_list, '>>>>>>>>>>'
+
+        open_list.insert(([state], scoreEvaluation(state)))
+
+
+        while (not open_list.isEmpty()):
+            current_value = open_list.pop()
+            current_path = current_value[0]
+            last_visited_state = current_path[-1]
+
+            # get all legal actions for pacman
+            legal = last_visited_state.getLegalPacmanActions()
+#            print 'successor call ', s
+
+#            if s > 5:
+#                print 'successor calls finish'
+#                break
+            # get successor states for each action
+            for action in legal:
+#                print action
+                successor = last_visited_state.generatePacmanSuccessor(action)
+#                print [successor], (' -- successor')
+                if successor == None:
+                    break
+                s += 1
+                new_score = scoreEvaluation(successor)
+#                print current_path, ' -- current path', type(current_path)
+                new_path = current_path + [successor]
+#                print new_path, ' -- new path'
+                new_data = (new_path, new_score)
+#                print new_data, ' -- new data'
+                open_list.insert(new_data)
+
+                try:
+                    base_action[successor] = base_action[last_visited_state]
+                except:
+                    base_action[successor] = action
+#                print '\t max score : ', max_score
+#                print '\t new score : ', new_score
+                if new_score > max_score:
+                    max_score = new_score
+                    max_state = successor
+
+
+        print '\t max score : ', max_score
+        print ' _____returning _____', base_action[max_state], '\n\n'
+#        exit()
+        return base_action[max_state]
+
         # TODO: write A* Algorithm instead of returning Directions.STOP
         return Directions.STOP
