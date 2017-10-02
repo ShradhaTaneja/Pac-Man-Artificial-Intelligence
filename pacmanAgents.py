@@ -68,7 +68,8 @@ class BFSAgent(Agent):
         # queue initialised with base state
         queue = [state]
 
-        # stores the main action for all the nodes
+        # stores the first action for all the nodes
+        # each instance is the key, and the very first action to be taken from the given state is the value for each key
         base_action = {}
         max_score = 0
         max_state = ''
