@@ -193,7 +193,7 @@ class priorityQueue():
         self.items = []
 
     def pop(self):
-        sorted_items = sorted(self.items, key = lambda x:x[1])
+        sorted_items = sorted(self.items, key = lambda x:x[1], reverse = True)
         min_value = sorted_items.pop(0)
         self.items = sorted_items
         return min_value
