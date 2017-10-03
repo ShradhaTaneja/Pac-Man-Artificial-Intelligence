@@ -194,9 +194,34 @@ class priorityQueue():
 
     def pop(self):
         sorted_items = sorted(self.items, key = lambda x:x[1], reverse = True)
+#        return self.get_max(sorted_items)
         min_value = sorted_items.pop(0)
         self.items = sorted_items
         return min_value
+
+    def get_max(self, sorted_array):
+        max_data = sorted_array[0]
+        max_score = max_data[1]
+        max_len_path = 0
+        count = {}
+
+        for path in sorted_array:
+            print path, '??????????????'
+        for path, value in sorted_array:
+            print path, value, '?????'
+            try:
+                count[value] += 1
+            except:
+                count[value] = 0
+        print count, '>>>>>>'
+        if count[max_score] > 1:
+            for path, value in sorted_array:
+                if value == max_score and len(path) > max_len_path:
+                    final_max = (path, value)
+        else:
+            final_max = max_data
+
+        return final_max
 
     def insert(self, value):
         self.items.append(value)
