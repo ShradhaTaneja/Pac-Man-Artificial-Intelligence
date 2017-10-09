@@ -51,33 +51,24 @@ class GreedyAgent(Agent):
         return random.choice(bestActions)
 
 class BFSAgent(Agent):
-    # testing
-    counter = 0
-    frames_counter = 0
-    successor_calls = 0
     # Initialization Function: Called one time when the game starts
     def registerInitialState(self, state):
         return;
 
     # GetAction Function: Called with every frame
     def getAction(self, state):
-#        print '\t STARTING STATE IS : ', [state]
-        self.frames_counter += 1
-        count = 0
-
         # queue initialised with base state
         queue = [state]
 
-        # stores the first action for all the nodes
-        # each instance is the key, and the very first action to be taken from the given state is the value for each key
+        # stores the first action for all the nodes, each instance is the key, and the very first action to be taken from the given state is the value for each key
         base_action = {}
+
         max_score = 0
         max_state = state
 
         while(queue):
             current_state = queue.pop(0)
             if current_state.isWin():
-                print 'win state mil gyi'
                 return Directions.STOP
 
             # get all legal actions for pacman
@@ -89,10 +80,7 @@ class BFSAgent(Agent):
                 if successor == None:
                     break
                 if successor.isLose():
-                    print 'lose state mil gyi'
                     continue
-                self.successor_calls += 1
-                count += 1
 
                 # append successor state in queue
                 queue.append(successor)
@@ -103,34 +91,19 @@ class BFSAgent(Agent):
                 except:
                     base_action[successor] = action
 
-                print 'current : ', score
                 if score > max_score:
                     max_score = score
                     max_state = successor
 
-                print 'max    :', max_score
-                print '\n', '_' * 30, '\n'
-
-#        print self.successor_calls, 'sucessor_calls'
-#        print self.frames_counter, 'frame counter'
         return base_action[max_state]
 
 class DFSAgent(Agent):
-    frame_counter = 0
-    frame_max = 7
     # Initialization Function: Called one time when the game starts
     def registerInitialState(self, state):
         return;
 
     # GetAction Function: Called with every frame
     def getAction(self, state):
-#        print '\t STARTING STATE IS : ', [state]
-
-        succ_counter = 0
-        succ_max = 10
-
-        self.frame_counter +=1
-        print 'frame : ', self.frame_counter
         # stack initialised with base state
         stack = [state]
 
@@ -142,25 +115,20 @@ class DFSAgent(Agent):
         while(stack):
             current_state = stack.pop()
             if current_state.isWin():
-                print 'win state mil gyi'
                 return Directions.STOP
 
             # get all legal actions for pacman
             legal = current_state.getLegalPacmanActions()
-            if self.frame_counter == self.frame_max:
-                print 'legal actions : ', legal
 
             # get successor states for each action
             for action in legal:
                 successor = current_state.generatePacmanSuccessor(action)
-                if succ_counter == succ_max :
-                    continue
                 if successor == None:
                     break
 
                 if successor.isLose():
-                    print 'lose state mil gyi'
                     continue
+
                 # append successor state in stack
                 stack.append(successor)
                 score = scoreEvaluation(successor)
@@ -170,34 +138,10 @@ class DFSAgent(Agent):
                 except:
                     base_action[successor] = action
 
-                print action, score, max_score
-                if self.frame_counter == self.frame_max:
-                    print 'max score = ', max_score
                 if score > max_score:
                     max_score = score
                     max_state = successor
 
-                succ_counter += 1
-#                if self.frame_counter == self.frame_max:
-#                    print 'action = ', action
-#                    print 'current score = ', score
-#                    print 'max score = ', max_score
-#            if self.counter == self.counter_max:
-#                print 'max     :', max_score
-#                print 'maxstate:', [max_state]
-#                print 'action  :', base_action[max_state]
-#                print '\n', '_' * 30, '\n'
-
-#        print self.successor_calls, 'sucessor_calls'
-#        print self.frames_counter, 'frame counter'
-#        print '', [max_state]
-#        print '->', max_state.isLose()
-#        print 'returned', base_action[max_state]
-
-        if self.frame_counter == self.frame_max:
-            print 'end'
-            #exit()
-        print '------------------returning', base_action[max_state]
         return base_action[max_state]
 
 class priorityQueue():
