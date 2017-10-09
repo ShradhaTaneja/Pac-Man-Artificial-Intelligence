@@ -72,10 +72,13 @@ class BFSAgent(Agent):
         # each instance is the key, and the very first action to be taken from the given state is the value for each key
         base_action = {}
         max_score = 0
-        max_state = ''
+        max_state = state
 
         while(queue):
             current_state = queue.pop(0)
+            if current_state.isWin():
+                print 'win state mil gyi'
+                return Directions.STOP
 
             # get all legal actions for pacman
             legal = current_state.getLegalPacmanActions()
@@ -85,6 +88,9 @@ class BFSAgent(Agent):
                 successor = current_state.generatePacmanSuccessor(action)
                 if successor == None:
                     break
+                if successor.isLose():
+                    print 'lose state mil gyi'
+                    continue
                 self.successor_calls += 1
                 count += 1
 
@@ -135,6 +141,9 @@ class DFSAgent(Agent):
 
         while(stack):
             current_state = stack.pop()
+            if current_state.isWin():
+                print 'win state mil gyi'
+                return Directions.STOP
 
             # get all legal actions for pacman
             legal = current_state.getLegalPacmanActions()
@@ -149,7 +158,10 @@ class DFSAgent(Agent):
                 if successor == None:
                     break
 
-                    # append successor state in stack
+                if successor.isLose():
+                    print 'lose state mil gyi'
+                    continue
+                # append successor state in stack
                 stack.append(successor)
                 score = scoreEvaluation(successor)
 
