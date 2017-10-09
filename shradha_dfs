@@ -1,0 +1,1043 @@
+frame :  1
+West 10.0 0
+East 10.0 10.0
+West 10.0 10.0
+East 20.0 10.0
+West 20.0 20.0
+East 30.0 20.0
+West 30.0 30.0
+East 40.0 30.0
+West 40.0 40.0
+North 50.0 40.0
+------------------returning East
+frame :  2
+West 10.0 0
+East 20.0 10.0
+West 20.0 20.0
+East 30.0 20.0
+West 30.0 30.0
+East 40.0 30.0
+West 40.0 40.0
+North 50.0 40.0
+North 60.0 50.0
+South 50.0 60.0
+------------------returning East
+frame :  3
+West 20.0 0
+East 30.0 20.0
+West 30.0 30.0
+East 40.0 30.0
+West 40.0 40.0
+North 50.0 40.0
+North 60.0 50.0
+South 50.0 60.0
+West 50.0 60.0
+North 50.0 60.0
+------------------returning East
+frame :  4
+West 30.0 0
+East 40.0 30.0
+West 40.0 40.0
+North 50.0 40.0
+North 60.0 50.0
+South 50.0 60.0
+West 50.0 60.0
+North 50.0 60.0
+North 60.0 60.0
+South 50.0 60.0
+------------------returning East
+frame :  5
+West 40.0 0
+North 50.0 40.0
+North 60.0 50.0
+South 50.0 60.0
+West 50.0 60.0
+North 50.0 60.0
+North 60.0 60.0
+South 50.0 60.0
+West 50.0 60.0
+North 50.0 60.0
+------------------returning North
+frame :  6
+North 60.0 0
+South 50.0 60.0
+West 50.0 60.0
+North 50.0 60.0
+North 60.0 60.0
+South 50.0 60.0
+West 50.0 60.0
+North 50.0 60.0
+North 60.0 60.0
+South 50.0 60.0
+------------------returning North
+frame :  7
+legal actions :  ['West', 'East', 'North', 'South']
+West 70.0 0
+max score =  0
+East 70.0 70.0
+max score =  70.0
+North 70.0 70.0
+max score =  70.0
+South 60.0 70.0
+max score =  70.0
+legal actions :  ['North', 'South']
+North 60.0 70.0
+max score =  70.0
+South 60.0 70.0
+max score =  70.0
+legal actions :  ['West', 'North']
+West 60.0 70.0
+max score =  70.0
+North 60.0 70.0
+max score =  70.0
+legal actions :  ['North', 'South']
+North 60.0 70.0
+max score =  70.0
+South 60.0 70.0
+max score =  70.0
+legal actions :  ['West', 'North']
+legal actions :  ['West', 'East', 'North', 'South']
+legal actions :  ['West', 'East']
+legal actions :  ['West', 'East', 'North', 'South']
+legal actions :  ['North', 'South']
+legal actions :  ['West', 'East']
+legal actions :  ['West', 'East']
+end
+------------------returning West
+frame :  8
+West 80.0 0
+East 70.0 80.0
+West 70.0 80.0
+East 80.0 80.0
+North 80.0 80.0
+South 70.0 80.0
+North 70.0 80.0
+South 70.0 80.0
+West 70.0 80.0
+North 70.0 80.0
+------------------returning West
+frame :  9
+West 90.0 0
+East 80.0 90.0
+West 80.0 90.0
+East 80.0 90.0
+West 80.0 90.0
+East 90.0 90.0
+North 90.0 90.0
+South 80.0 90.0
+North 80.0 90.0
+South 80.0 90.0
+------------------returning West
+frame :  10
+West 100.0 0
+East 90.0 100.0
+West 90.0 100.0
+East 90.0 100.0
+West 90.0 100.0
+East 90.0 100.0
+West 90.0 100.0
+East 100.0 100.0
+North 100.0 100.0
+South 90.0 100.0
+------------------returning West
+frame :  11
+West 110.0 0
+East 100.0 110.0
+West 100.0 110.0
+East 100.0 110.0
+West 100.0 110.0
+East 100.0 110.0
+West 100.0 110.0
+East 100.0 110.0
+West 100.0 110.0
+East 110.0 110.0
+------------------returning West
+frame :  12
+West 120.0 0
+East 110.0 120.0
+West 110.0 120.0
+East 110.0 120.0
+West 110.0 120.0
+East 110.0 120.0
+West 110.0 120.0
+East 110.0 120.0
+West 110.0 120.0
+East 110.0 120.0
+------------------returning West
+frame :  13
+West 130.0 0
+East 120.0 130.0
+West 120.0 130.0
+East 120.0 130.0
+West 120.0 130.0
+East 120.0 130.0
+West 120.0 130.0
+East 120.0 130.0
+West 120.0 130.0
+East 120.0 130.0
+------------------returning West
+frame :  14
+West 140.0 0
+East 130.0 140.0
+North 140.0 140.0
+South 140.0 140.0
+North 140.0 140.0
+South 150.0 140.0
+East 160.0 150.0
+North 150.0 160.0
+North 150.0 160.0
+South 150.0 160.0
+------------------returning South
+frame :  15
+North 140.0 0
+South 150.0 140.0
+East 160.0 150.0
+North 150.0 160.0
+North 150.0 160.0
+South 150.0 160.0
+East 160.0 160.0
+North 150.0 160.0
+North 150.0 160.0
+South 150.0 160.0
+------------------returning South
+frame :  16
+East 160.0 0
+North 150.0 160.0
+North 150.0 160.0
+South 150.0 160.0
+East 160.0 160.0
+North 150.0 160.0
+North 150.0 160.0
+South 150.0 160.0
+East 160.0 160.0
+North 150.0 160.0
+------------------returning East
+frame :  17
+West 160.0 0
+East 170.0 160.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+------------------returning East
+frame :  18
+West 170.0 0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+------------------returning West
+frame :  19
+West 170.0 0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+------------------returning West
+frame :  20
+East 170.0 0
+North 170.0 170.0
+North 170.0 170.0
+South 170.0 170.0
+East 170.0 170.0
+North 170.0 170.0
+North 170.0 170.0
+South 170.0 170.0
+East 170.0 170.0
+North 170.0 170.0
+------------------returning East
+frame :  21
+West 170.0 0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+------------------returning West
+frame :  22
+East 170.0 0
+North 170.0 170.0
+North 170.0 170.0
+South 170.0 170.0
+East 170.0 170.0
+North 170.0 170.0
+North 170.0 170.0
+South 170.0 170.0
+East 170.0 170.0
+North 170.0 170.0
+------------------returning East
+frame :  23
+West 170.0 0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+------------------returning West
+frame :  24
+East 170.0 0
+North 170.0 170.0
+North 170.0 170.0
+South 170.0 170.0
+East 170.0 170.0
+North 170.0 170.0
+North 170.0 170.0
+South 170.0 170.0
+East 170.0 170.0
+North 170.0 170.0
+------------------returning East
+frame :  25
+West 170.0 0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+------------------returning West
+frame :  26
+East 170.0 0
+North 170.0 170.0
+North 170.0 170.0
+South 170.0 170.0
+East 170.0 170.0
+North 170.0 170.0
+North 170.0 170.0
+South 170.0 170.0
+East 170.0 170.0
+North 170.0 170.0
+------------------returning East
+frame :  27
+West 170.0 0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+------------------returning West
+frame :  28
+East 170.0 0
+North 170.0 170.0
+North 170.0 170.0
+South 170.0 170.0
+East 170.0 170.0
+North 170.0 170.0
+North 170.0 170.0
+South 170.0 170.0
+East 170.0 170.0
+North 170.0 170.0
+------------------returning East
+frame :  29
+West 170.0 0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+lose state mil gyi
+West 170.0 170.0
+lose state mil gyi
+West 170.0 170.0
+lose state mil gyi
+West 170.0 170.0
+------------------returning West
+frame :  30
+East 170.0 0
+North 170.0 170.0
+North 170.0 170.0
+South 170.0 170.0
+East 170.0 170.0
+North 170.0 170.0
+North 170.0 170.0
+South 170.0 170.0
+East 170.0 170.0
+North 170.0 170.0
+------------------returning East
+frame :  31
+West 170.0 0
+East 170.0 170.0
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+lose state mil gyi
+West 170.0 170.0
+lose state mil gyi
+West 170.0 170.0
+lose state mil gyi
+lose state mil gyi
+North 170.0 170.0
+North 170.0 170.0
+lose state mil gyi
+West 180.0 170.0
+------------------returning East
+frame :  32
+West 170.0 0
+East 170.0 170.0
+West 170.0 170.0
+lose state mil gyi
+West 170.0 170.0
+lose state mil gyi
+West 170.0 170.0
+lose state mil gyi
+lose state mil gyi
+lose state mil gyi
+West 170.0 170.0
+East 170.0 170.0
+West 170.0 170.0
+lose state mil gyi
+West 170.0 170.0
+lose state mil gyi
+lose state mil gyi
+North 170.0 170.0
+------------------returning West
+frame :  33
+West 170.0 0
+East 170.0 170.0
+West 170.0 170.0
+lose state mil gyi
+West 170.0 170.0
+lose state mil gyi
+lose state mil gyi
+North 170.0 170.0
+North 170.0 170.0
+lose state mil gyi
+West 180.0 170.0
+East 170.0 180.0
+North 180.0 180.0
+lose state mil gyi
+North 190.0 180.0
+------------------returning East
+frame :  34
+West 170.0 0
+lose state mil gyi
+West 170.0 170.0
+lose state mil gyi
+lose state mil gyi
+North 170.0 170.0
+North 170.0 170.0
+lose state mil gyi
+West 180.0 170.0
+East 170.0 180.0
+North 180.0 180.0
+lose state mil gyi
+North 190.0 180.0
+lose state mil gyi
+West 200.0 190.0
+North 200.0 200.0
+------------------returning West
+frame :  35
+West 170.0 0
+lose state mil gyi
+lose state mil gyi
+North 170.0 170.0
+North 170.0 170.0
+lose state mil gyi
+West 180.0 170.0
+East 170.0 180.0
+North 180.0 180.0
+lose state mil gyi
+North 190.0 180.0
+lose state mil gyi
+West 200.0 190.0
+North 200.0 200.0
+South 190.0 200.0
+------------------returning West
+frame :  36
+lose state mil gyi
+North 170.0 0
+North 170.0 170.0
+lose state mil gyi
+West 180.0 170.0
+East 170.0 180.0
+North 180.0 180.0
+lose state mil gyi
+North 190.0 180.0
+lose state mil gyi
+West 200.0 190.0
+North 200.0 200.0
+South 190.0 200.0
+North 190.0 200.0
+------------------returning North
+frame :  37
+North 170.0 0
+lose state mil gyi
+West 180.0 170.0
+East 170.0 180.0
+North 180.0 180.0
+lose state mil gyi
+North 190.0 180.0
+lose state mil gyi
+West 200.0 190.0
+North 200.0 200.0
+lose state mil gyi
+North 210.0 200.0
+lose state mil gyi
+West 220.0 210.0
+East 220.0 220.0
+------------------returning North
+frame :  38
+West 180.0 0
+East 170.0 180.0
+North 180.0 180.0
+lose state mil gyi
+North 190.0 180.0
+lose state mil gyi
+West 200.0 190.0
+North 200.0 200.0
+South 190.0 200.0
+North 190.0 200.0
+South 190.0 200.0
+West 200.0 200.0
+------------------returning North
+frame :  39
+North 190.0 0
+lose state mil gyi
+West 200.0 190.0
+North 200.0 200.0
+lose state mil gyi
+North 210.0 200.0
+lose state mil gyi
+West 220.0 210.0
+East 220.0 220.0
+North 220.0 220.0
+South 210.0 220.0
+North 210.0 220.0
+South 210.0 220.0
+------------------returning North
+frame :  40
+West 200.0 0
+North 200.0 200.0
+South 190.0 200.0
+North 190.0 200.0
+South 190.0 200.0
+West 200.0 200.0
+East 190.0 200.0
+North 190.0 200.0
+South 190.0 200.0
+North 190.0 200.0
+------------------returning West
+frame :  41
+West 210.0 0
+East 200.0 210.0
+West 200.0 210.0
+North 210.0 210.0
+South 200.0 210.0
+North 200.0 210.0
+South 200.0 210.0
+West 210.0 210.0
+East 200.0 210.0
+North 200.0 210.0
+------------------returning West
+frame :  42
+West 220.0 0
+East 210.0 220.0
+West 210.0 220.0
+East 210.0 220.0
+West 210.0 220.0
+North 220.0 220.0
+South 210.0 220.0
+North 210.0 220.0
+South 210.0 220.0
+West 220.0 220.0
+------------------returning West
+frame :  43
+West 230.0 0
+East 220.0 230.0
+North 230.0 230.0
+South 230.0 230.0
+North 230.0 230.0
+South 240.0 230.0
+East 250.0 240.0
+North 240.0 250.0
+North 240.0 250.0
+South 240.0 250.0
+------------------returning South
+frame :  44
+North 230.0 0
+South 240.0 230.0
+East 250.0 240.0
+North 240.0 250.0
+North 240.0 250.0
+South 240.0 250.0
+East 250.0 250.0
+North 240.0 250.0
+North 240.0 250.0
+South 240.0 250.0
+------------------returning South
+frame :  45
+East 250.0 0
+North 240.0 250.0
+North 240.0 250.0
+South 240.0 250.0
+East 250.0 250.0
+North 240.0 250.0
+North 240.0 250.0
+South 240.0 250.0
+East 250.0 250.0
+North 240.0 250.0
+------------------returning East
+frame :  46
+West 250.0 0
+East 260.0 250.0
+South 260.0 260.0
+North 260.0 260.0
+South 270.0 260.0
+West 280.0 270.0
+North 270.0 280.0
+North 270.0 280.0
+South 270.0 280.0
+West 280.0 280.0
+------------------returning South
+frame :  47
+North 260.0 0
+South 270.0 260.0
+West 280.0 270.0
+North 270.0 280.0
+North 270.0 280.0
+South 270.0 280.0
+West 280.0 280.0
+North 270.0 280.0
+North 270.0 280.0
+South 270.0 280.0
+------------------returning South
+frame :  48
+West 280.0 0
+North 270.0 280.0
+North 270.0 280.0
+South 270.0 280.0
+West 280.0 280.0
+North 270.0 280.0
+North 270.0 280.0
+South 270.0 280.0
+West 280.0 280.0
+North 270.0 280.0
+------------------returning West
+frame :  49
+West 290.0 0
+East 280.0 290.0
+West 280.0 290.0
+North 280.0 290.0
+North 280.0 290.0
+South 280.0 290.0
+West 280.0 290.0
+North 280.0 290.0
+North 280.0 290.0
+South 280.0 290.0
+------------------returning West
+frame :  50
+West 300.0 0
+East 290.0 300.0
+West 290.0 300.0
+East 290.0 300.0
+West 290.0 300.0
+North 290.0 300.0
+North 290.0 300.0
+South 290.0 300.0
+West 290.0 300.0
+North 290.0 300.0
+------------------returning West
+frame :  51
+East 300.0 0
+North 310.0 300.0
+North 320.0 310.0
+South 310.0 320.0
+East 310.0 320.0
+North 310.0 320.0
+North 320.0 320.0
+South 310.0 320.0
+East 310.0 320.0
+North 310.0 320.0
+------------------returning North
+frame :  52
+North 320.0 0
+South 310.0 320.0
+East 310.0 320.0
+North 310.0 320.0
+North 320.0 320.0
+South 310.0 320.0
+East 310.0 320.0
+North 310.0 320.0
+North 320.0 320.0
+South 310.0 320.0
+------------------returning North
+frame :  53
+North 330.0 0
+South 320.0 330.0
+North 320.0 330.0
+South 320.0 330.0
+East 320.0 330.0
+North 320.0 330.0
+North 320.0 330.0
+South 320.0 330.0
+East 320.0 330.0
+North 320.0 330.0
+------------------returning North
+frame :  54
+North 340.0 0
+South 330.0 340.0
+North 330.0 340.0
+South 330.0 340.0
+North 330.0 340.0
+South 330.0 340.0
+East 330.0 340.0
+North 330.0 340.0
+North 330.0 340.0
+South 330.0 340.0
+------------------returning North
+frame :  55
+East 350.0 0
+North 350.0 350.0
+South 340.0 350.0
+North 340.0 350.0
+South 340.0 350.0
+North 340.0 350.0
+South 340.0 350.0
+North 340.0 350.0
+South 340.0 350.0
+East 340.0 350.0
+------------------returning East
+frame :  56
+West 350.0 0
+East 350.0 350.0
+West 350.0 350.0
+East 350.0 350.0
+North 360.0 350.0
+South 350.0 360.0
+North 350.0 360.0
+South 350.0 360.0
+East 350.0 360.0
+North 350.0 360.0
+------------------returning East
+frame :  57
+West 350.0 0
+East 350.0 350.0
+North 360.0 350.0
+South 350.0 360.0
+North 350.0 360.0
+South 350.0 360.0
+East 350.0 360.0
+North 350.0 360.0
+North 350.0 360.0
+South 350.0 360.0
+------------------returning North
+frame :  58
+North 370.0 0
+South 360.0 370.0
+West 360.0 370.0
+East 360.0 370.0
+North 360.0 370.0
+South 360.0 370.0
+North 360.0 370.0
+South 360.0 370.0
+East 360.0 370.0
+North 360.0 370.0
+------------------returning North
+frame :  59
+East 380.0 0
+South 370.0 380.0
+North 370.0 380.0
+South 370.0 380.0
+West 370.0 380.0
+East 370.0 380.0
+North 370.0 380.0
+South 370.0 380.0
+North 370.0 380.0
+South 370.0 380.0
+------------------returning East
+frame :  60
+West 380.0 0
+East 390.0 380.0
+North 390.0 390.0
+North 400.0 390.0
+South 390.0 400.0
+West 390.0 400.0
+East 400.0 400.0
+North 390.0 400.0
+North 400.0 400.0
+South 390.0 400.0
+------------------returning North
+frame :  61
+North 400.0 0
+South 390.0 400.0
+West 390.0 400.0
+East 400.0 400.0
+North 390.0 400.0
+North 400.0 400.0
+South 390.0 400.0
+West 390.0 400.0
+East 400.0 400.0
+North 390.0 400.0
+------------------returning North
+frame :  62
+West 410.0 0
+South 400.0 410.0
+North 400.0 410.0
+South 400.0 410.0
+West 400.0 410.0
+East 410.0 410.0
+North 400.0 410.0
+North 400.0 410.0
+South 400.0 410.0
+West 400.0 410.0
+------------------returning West
+frame :  63
+West 420.0 0
+East 410.0 420.0
+West 410.0 420.0
+South 410.0 420.0
+North 410.0 420.0
+South 410.0 420.0
+West 410.0 420.0
+East 420.0 420.0
+North 410.0 420.0
+North 410.0 420.0
+------------------returning West
+frame :  64
+West 420.0 0
+East 420.0 420.0
+West 420.0 420.0
+East 420.0 420.0
+West 420.0 420.0
+South 420.0 420.0
+North 420.0 420.0
+South 420.0 420.0
+West 420.0 420.0
+East 430.0 420.0
+------------------returning East
+frame :  65
+West 420.0 0
+East 420.0 420.0
+West 420.0 420.0
+South 420.0 420.0
+North 420.0 420.0
+South 420.0 420.0
+lose state mil gyi
+East 430.0 420.0
+North 420.0 430.0
+North 420.0 430.0
+lose state mil gyi
+West 420.0 430.0
+------------------returning East
+frame :  66
+West 420.0 0
+South 420.0 420.0
+North 420.0 420.0
+South 420.0 420.0
+West 420.0 420.0
+East 430.0 420.0
+North 420.0 430.0
+North 420.0 430.0
+South 420.0 430.0
+West 420.0 430.0
+------------------returning South
+frame :  67
+North 420.0 0
+South 420.0 420.0
+West 420.0 420.0
+East 430.0 420.0
+North 420.0 430.0
+North 420.0 430.0
+South 420.0 430.0
+West 420.0 430.0
+East 430.0 430.0
+North 420.0 430.0
+------------------returning South
+frame :  68
+West 420.0 0
+East 430.0 420.0
+North 420.0 430.0
+North 420.0 430.0
+South 420.0 430.0
+West 420.0 430.0
+East 430.0 430.0
+North 420.0 430.0
+North 420.0 430.0
+South 420.0 430.0
+------------------returning East
+frame :  69
+West 430.0 0
+East 440.0 430.0
+West 440.0 440.0
+East 450.0 440.0
+North 450.0 450.0
+South 450.0 450.0
+North 450.0 450.0
+South 450.0 450.0
+West 450.0 450.0
+North 450.0 450.0
+------------------returning East
+frame :  70
+West 440.0 0
+East 450.0 440.0
+North 450.0 450.0
+South 450.0 450.0
+North 450.0 450.0
+South 450.0 450.0
+West 450.0 450.0
+North 450.0 450.0
+South 450.0 450.0
+North 450.0 450.0
+------------------returning East
+frame :  71
+West 450.0 0
+East 460.0 450.0
+West 460.0 460.0
+East 470.0 460.0
+West 470.0 470.0
+East 480.0 470.0
+South 470.0 480.0
+East 470.0 480.0
+North 470.0 480.0
+South 470.0 480.0
+------------------returning East
+frame :  72
+West 460.0 0
+East 470.0 460.0
+West 470.0 470.0
+East 480.0 470.0
+South 470.0 480.0
+East 470.0 480.0
+North 470.0 480.0
+South 470.0 480.0
+West 470.0 480.0
+East 470.0 480.0
+------------------returning East
+frame :  73
+West 470.0 0
+East 480.0 470.0
+South 470.0 480.0
+East 470.0 480.0
+North 470.0 480.0
+South 470.0 480.0
+West 470.0 480.0
+East 470.0 480.0
+North 470.0 480.0
+East 470.0 480.0
+------------------returning East
+frame :  74
+West 480.0 0
+East 490.0 480.0
+South 480.0 490.0
+West 480.0 490.0
+North 480.0 490.0
+South 480.0 490.0
+West 480.0 490.0
+East 480.0 490.0
+North 480.0 490.0
+West 480.0 490.0
+------------------returning East
+frame :  75
+West 490.0 0
+East 500.0 490.0
+West 500.0 500.0
+East 510.0 500.0
+West 510.0 510.0
+East 520.0 510.0
+North 520.0 520.0
+South 520.0 520.0
+North 520.0 520.0
+South 530.0 520.0
+------------------returning East
+frame :  76
+West 500.0 0
+East 510.0 500.0
+West 510.0 510.0
+East 520.0 510.0
+North 520.0 520.0
+South 520.0 520.0
+North 520.0 520.0
+lose state mil gyi
+West 520.0 520.0
+East 530.0 520.0
+North 530.0 530.0
+------------------returning East
+frame :  77
+West 510.0 0
+East 520.0 510.0
+North 520.0 520.0
+South 520.0 520.0
+North 520.0 520.0
+lose state mil gyi
+West 520.0 520.0
+East 530.0 520.0
+North 530.0 530.0
+lose state mil gyi
+North 540.0 530.0
+lose state mil gyi
+West 550.0 540.0
+------------------returning South
+frame :  78
+North 520.0 0
+lose state mil gyi
+West 520.0 520.0
+East 530.0 520.0
+North 530.0 530.0
+lose state mil gyi
+North 540.0 530.0
+lose state mil gyi
+West 550.0 540.0
+South 540.0 550.0
+North 540.0 550.0
+South 540.0 550.0
+West 540.0 550.0
+------------------returning North
+frame :  79
+West 520.0 0
+East 530.0 520.0
+North 530.0 530.0
+South 520.0 530.0
+North 520.0 530.0
+South 530.0 530.0
+East 540.0 530.0
+North 530.0 540.0
+South 540.0 540.0
+North 540.0 540.0
+------------------returning South
+frame :  80
+North 520.0 0
+South 530.0 520.0
+East 540.0 530.0
+North 530.0 540.0
+South 540.0 540.0
+North 540.0 540.0
+lose state mil gyi
+East 550.0 540.0
+North 540.0 550.0
+lose state mil gyi
+North 540.0 550.0
+South 540.0 550.0
+------------------returning South
+Average Score: 530.0
+Scores:        530.0
+Win Rate:      0/1 (0.00)
+Record:        Loss
