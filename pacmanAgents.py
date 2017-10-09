@@ -150,9 +150,6 @@ class priorityQueue():
 
     def pop(self):
         sorted_items = sorted(self.items, key = lambda x:x[1])
-#        sorted_items = sorted(self.items, key = lambda x:x[1], reverse = True)
-#        return self.get_max(sorted_items)
-
         min_value = sorted_items.pop(0)
         self.items = sorted_items
         return min_value
@@ -163,15 +160,11 @@ class priorityQueue():
         max_len_path = 0
         count = {}
 
-        for path in sorted_array:
-            print path, '??????????????'
         for path, value in sorted_array:
-            print path, value, '?????'
             try:
                 count[value] += 1
             except:
                 count[value] = 0
-        print count, '>>>>>>'
         if count[max_score] > 1:
             for path, value in sorted_array:
                 if value == max_score and len(path) > max_len_path:
@@ -198,7 +191,6 @@ class priorityQueue():
         return sorted(self.items, key = lambda x:x[1])
 
 class AStarAgent(Agent):
-    count = 0
     # Initialization Function: Called one time when the game starts
     def registerInitialState(self, state):
         return;
@@ -208,23 +200,13 @@ class AStarAgent(Agent):
 
     # GetAction Function: Called with every frame
     def getAction(self, state):
-        s = 0
         # stores the main action for all the nodes
         base_action = {}
         max_score = 0
         max_state = ''
 
-#        if self.count > 3:
-#            print 'frame calls finished'
-#            print base_action[max_state]
-#            exit()
-
-        self.count += 1
-        print '-- call ', self.count
-
         open_list = priorityQueue()
         closed_list = priorityQueue()
-#        print open_list, closed_list, '>>>>>>>>>>'
 
         open_list.insert(([state], scoreEvaluation(state)))
 
@@ -233,67 +215,41 @@ class AStarAgent(Agent):
             current_path = current_value[0]
             last_visited_state = current_path[-1]
 
-#            print current_value, current_path, '<<<<<<<<<<<<<<<<<<<<'
-
             # g(x) = depth, root node is depth 0, depth for each successor will be length of it's parent path
             g_cost = len(current_path)
-#            print g_cost, '______ g cost = depth '
 
             if last_visited_state.isWin():
-                print 'win state mil gyi'
                 return Directions.STOP
 
             # get all legal actions for pacman
             legal = last_visited_state.getLegalPacmanActions()
 
-            print 'successor call ', s
-#            if s > 5:
-#                print 'successor calls finish'
-#                break
             # get successor states for each action
             for action in legal:
-#                print action
                 successor = last_visited_state.generatePacmanSuccessor(action)
-#                print [successor], (' -- successor')
                 if successor == None:
                     break
                 if successor.isLose():
-                    print 'lose state mil gyi'
                     continue
-                s += 1
-#                print current_path, ' -- current path', type(current_path)
                 new_path = current_path + [successor]
-#                print new_path, ' -- new path'
 
                 new_score = scoreEvaluation(successor)
 
                 h_cost = - (scoreEvaluation(successor) - scoreEvaluation(state))
-#                print 'h_cost %d, scoreeval(succ) %d, scoreeval(root) %d' % (h_cost, scoreEvaluation(successor), scoreEvaluation(state))
-#                print h_cost, scoreEvaluation(successor), scoreEvaluation(state)
 
                 total_cost = g_cost + h_cost
-#                print total_cost, '---- total cost'
                 new_data = (new_path, total_cost)
 
-#                print new_data, ' -- new data'
                 open_list.insert(new_data)
 
                 try:
                     base_action[successor] = base_action[last_visited_state]
                 except:
                     base_action[successor] = action
-#                print '\t max score : ', max_score
-#                print '\t new score : ', new_score
+
                 if new_score > max_score:
                     max_score = new_score
-                    print 'max state set krdi'
                     max_state = successor
 
-
-        print '\t max score : ', max_score
-        print ' _____returning _____', base_action[max_state], '\n\n'
-#        exit()
         return base_action[max_state]
 
-        # TODO: write A* Algorithm instead of returning Directions.STOP
-        return Directions.STOP
