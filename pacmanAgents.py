@@ -205,8 +205,10 @@ class priorityQueue():
         self.items = []
 
     def pop(self):
-        sorted_items = sorted(self.items, key = lambda x:x[1], reverse = True)
+        sorted_items = sorted(self.items, key = lambda x:x[1])
+#        sorted_items = sorted(self.items, key = lambda x:x[1], reverse = True)
 #        return self.get_max(sorted_items)
+
         min_value = sorted_items.pop(0)
         self.items = sorted_items
         return min_value
@@ -257,6 +259,9 @@ class AStarAgent(Agent):
     def registerInitialState(self, state):
         return;
 
+    def getTotalScore(self, depth, state):
+        return 0
+
     # GetAction Function: Called with every frame
     def getAction(self, state):
         s = 0
@@ -279,11 +284,16 @@ class AStarAgent(Agent):
 
         open_list.insert(([state], scoreEvaluation(state)))
 
-
         while (not open_list.isEmpty()):
             current_value = open_list.pop()
             current_path = current_value[0]
             last_visited_state = current_path[-1]
+
+#            print current_value, current_path, '<<<<<<<<<<<<<<<<<<<<'
+
+            # g(x) = depth, root node is depth 0, depth for each successor will be length of it's parent path
+            g_cost = len(current_path)
+#            print g_cost, '______ g cost = depth '
 
             if last_visited_state.isWin():
                 print 'win state mil gyi'
@@ -292,7 +302,7 @@ class AStarAgent(Agent):
             # get all legal actions for pacman
             legal = last_visited_state.getLegalPacmanActions()
 
-#            print 'successor call ', s
+            print 'successor call ', s
 #            if s > 5:
 #                print 'successor calls finish'
 #                break
@@ -307,11 +317,20 @@ class AStarAgent(Agent):
                     print 'lose state mil gyi'
                     continue
                 s += 1
-                new_score = scoreEvaluation(successor)
 #                print current_path, ' -- current path', type(current_path)
                 new_path = current_path + [successor]
 #                print new_path, ' -- new path'
-                new_data = (new_path, new_score)
+
+                new_score = scoreEvaluation(successor)
+
+                h_cost = - (scoreEvaluation(successor) - scoreEvaluation(state))
+#                print 'h_cost %d, scoreeval(succ) %d, scoreeval(root) %d' % (h_cost, scoreEvaluation(successor), scoreEvaluation(state))
+#                print h_cost, scoreEvaluation(successor), scoreEvaluation(state)
+
+                total_cost = g_cost + h_cost
+#                print total_cost, '---- total cost'
+                new_data = (new_path, total_cost)
+
 #                print new_data, ' -- new data'
                 open_list.insert(new_data)
 
@@ -323,6 +342,7 @@ class AStarAgent(Agent):
 #                print '\t new score : ', new_score
                 if new_score > max_score:
                     max_score = new_score
+                    print 'max state set krdi'
                     max_state = successor
 
 
