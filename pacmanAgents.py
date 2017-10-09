@@ -285,10 +285,14 @@ class AStarAgent(Agent):
             current_path = current_value[0]
             last_visited_state = current_path[-1]
 
+            if last_visited_state.isWin():
+                print 'win state mil gyi'
+                return Directions.STOP
+
             # get all legal actions for pacman
             legal = last_visited_state.getLegalPacmanActions()
-#            print 'successor call ', s
 
+#            print 'successor call ', s
 #            if s > 5:
 #                print 'successor calls finish'
 #                break
@@ -299,6 +303,9 @@ class AStarAgent(Agent):
 #                print [successor], (' -- successor')
                 if successor == None:
                     break
+                if successor.isLose():
+                    print 'lose state mil gyi'
+                    continue
                 s += 1
                 new_score = scoreEvaluation(successor)
 #                print current_path, ' -- current path', type(current_path)
