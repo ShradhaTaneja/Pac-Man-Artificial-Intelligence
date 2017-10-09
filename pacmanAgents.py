@@ -110,7 +110,7 @@ class DFSAgent(Agent):
         # stores the main action for all the nodes
         base_action = {}
         max_score = 0
-        max_state = ''
+        max_state = state
 
         while(stack):
             current_state = stack.pop()
@@ -195,20 +195,17 @@ class AStarAgent(Agent):
     def registerInitialState(self, state):
         return;
 
-    def getTotalScore(self, depth, state):
-        return 0
-
     # GetAction Function: Called with every frame
     def getAction(self, state):
         # stores the main action for all the nodes
         base_action = {}
         max_score = 0
-        max_state = ''
+        max_state = state
 
         open_list = priorityQueue()
         closed_list = priorityQueue()
 
-        open_list.insert(([state], scoreEvaluation(state)))
+        open_list.insert(([state], 0)
 
         while (not open_list.isEmpty()):
             current_value = open_list.pop()
