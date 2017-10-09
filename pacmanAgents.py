@@ -205,7 +205,7 @@ class AStarAgent(Agent):
         open_list = priorityQueue()
         closed_list = priorityQueue()
 
-        open_list.insert(([state], 0)
+        open_list.insert(([state], 0))
 
         while (not open_list.isEmpty()):
             current_value = open_list.pop()
