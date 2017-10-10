@@ -60,7 +60,7 @@ class BFSAgent(Agent):
         # queue initialised with base state
         queue = [state]
 
-        # stores the first action for all the nodes, each instance is the key, and the very first action to be taken from the given state is the value for each key
+        # stores the first action to reach specific nodes, ex: {<gameStateInstance> : <action>}
         base_action = {}
 
         max_score = 0
@@ -86,6 +86,7 @@ class BFSAgent(Agent):
                 queue.append(successor)
                 score = scoreEvaluation(successor)
 
+                # base action for current state is same as the base action for parent state
                 try:
                     base_action[successor] = base_action[current_state]
                 except:
@@ -107,7 +108,7 @@ class DFSAgent(Agent):
         # stack initialised with base state
         stack = [state]
 
-        # stores the main action for all the nodes
+        # stores the first action to reach specific nodes, ex: {<gameStateInstance> : <action>}
         base_action = {}
         max_score = 0
         max_state = state
@@ -133,6 +134,7 @@ class DFSAgent(Agent):
                 stack.append(successor)
                 score = scoreEvaluation(successor)
 
+                # base action for current state is same as the base action for parent state
                 try:
                     base_action[successor] = base_action[current_state]
                 except:
@@ -197,7 +199,7 @@ class AStarAgent(Agent):
 
     # GetAction Function: Called with every frame
     def getAction(self, state):
-        # stores the main action for all the nodes
+        # stores the first action for all the nodes, ex: {<gameStateInstance> : <action>}
         base_action = {}
         max_score = 0
         max_state = state
@@ -239,6 +241,7 @@ class AStarAgent(Agent):
 
                 open_list.insert(new_data)
 
+                # base action for current state is same as the base action for parent state
                 try:
                     base_action[successor] = base_action[last_visited_state]
                 except:
