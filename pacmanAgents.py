@@ -51,56 +51,25 @@ class GreedyAgent(Agent):
         return random.choice(bestActions)
 
 class BFSAgent(Agent):
-    # testing
-    counter = 0
     # Initialization Function: Called one time when the game starts
     def registerInitialState(self, state):
         return;
 
     # GetAction Function: Called with every frame
     def getAction(self, state):
-        print '\t STARTING STATE IS : ', [state]
         # queue initialised with base state
         queue = [state]
-        bfs_traversal = []
-        node_child_mapping = {}
-        node_status_mapping = {}
 
+        # stores the first action to reach specific nodes, ex: {<gameStateInstance> : <action>}
+        base_action = {}
+
+        max_score = 0
+        max_state = state
 
         while(queue):
-            # testing
-            if self.counter > 3:
-                print '\n\n FINAL DATA IS \n\n'
-                print '*'*10, ' queue ', '*'*10
-                print queue, '\n'
-
-                print '*'*10, ' bfs traversal ', '*'*10
-                print  bfs_traversal, '\n'
-
-                print '*'*10, ' node child mapping ', '*'*10
-                print node_child_mapping, '\n'
-
-                print '*'*10, ' node*status mapping ', '*'*10
-                print node_status_mapping, '\n'
-
-#                print '*'*10, ' queue ', '*'*10
-#                print queue
-
-                exit()
-            print '\n\n', '__'*20, self.counter, '________________________________________________________\n\n'
-            self.counter += 1
             current_state = queue.pop(0)
-            print '\t CURRENT STATE IS : ', [current_state]
-            bfs_traversal.append(current_state)
-
-            if current_state.isLose():
-                node_status_mapping[current_state] = 'lose'
-            elif current_state.isWin():
-                node_status_mapping[current_state] = 'win'
-            else:
-                node_status_mapping[current_state] = None
-
-            node_child_mapping[current_state] = {}
+            if current_state.isWin():
+                return Directions.STOP
 
             # get all legal actions for pacman
             legal = current_state.getLegalPacmanActions()
@@ -108,41 +77,26 @@ class BFSAgent(Agent):
             # get successor states for each action
             for action in legal:
                 successor = current_state.generatePacmanSuccessor(action)
-
-
                 if successor == None:
                     break
+                if successor.isLose():
+                    continue
+
+                # append successor state in queue
                 queue.append(successor)
                 score = scoreEvaluation(successor)
-                node_child_mapping[current_state][successor] = (action, score)
 
+                # base action for current state is same as the base action for parent state
+                try:
+                    base_action[successor] = base_action[current_state]
+                except:
+                    base_action[successor] = action
 
-            print '_'*10, ' queue ', '_'*10
-            print queue, '\n'
+                if score > max_score:
+                    max_score = score
+                    max_state = successor
 
-            print '_'*10, ' bfs traversal ', '_'*10
-            print  bfs_traversal, '\n'
-
-            print '_'*10, ' node child mapping ', '_'*10
-            print node_child_mapping, '\n'
-
-            print '_'*10, ' node_status mapping ', '_'*10
-            print node_status_mapping, '\n'
-
-
-        exit()
-        print 'shayad kuch thukaaa'
-
-
-
-        # SHRADHA RECENT CODE ABOVE THIS - 5 pm
-
-        # TODO: write BFS Algorithm instead of returning Directions.STOP
-        return Directions.STOP
-
-
-    def getCustomSuccessors(self, state, action):
-        return state.generatePacmanSuccessor(action)
+        return base_action[max_state]
 
 class DFSAgent(Agent):
     # Initialization Function: Called one time when the game starts
@@ -151,8 +105,92 @@ class DFSAgent(Agent):
 
     # GetAction Function: Called with every frame
     def getAction(self, state):
-        # TODO: write DFS Algorithm instead of returning Directions.STOP
-        return Directions.STOP
+        # stack initialised with base state
+        stack = [state]
+
+        # stores the first action to reach specific nodes, ex: {<gameStateInstance> : <action>}
+        base_action = {}
+        max_score = 0
+        max_state = state
+
+        while(stack):
+            current_state = stack.pop()
+            if current_state.isWin():
+                return Directions.STOP
+
+            # get all legal actions for pacman
+            legal = current_state.getLegalPacmanActions()
+
+            # get successor states for each action
+            for action in legal:
+                successor = current_state.generatePacmanSuccessor(action)
+                if successor == None:
+                    break
+
+                if successor.isLose():
+                    continue
+
+                # append successor state in stack
+                stack.append(successor)
+                score = scoreEvaluation(successor)
+
+                # base action for current state is same as the base action for parent state
+                try:
+                    base_action[successor] = base_action[current_state]
+                except:
+                    base_action[successor] = action
+
+                if score > max_score:
+                    max_score = score
+                    max_state = successor
+
+        return base_action[max_state]
+
+class priorityQueue():
+    def __init__(self):
+        self.items = []
+
+    def pop(self):
+        sorted_items = sorted(self.items, key = lambda x:x[1])
+        min_value = sorted_items.pop(0)
+        self.items = sorted_items
+        return min_value
+
+    def get_max(self, sorted_array):
+        max_data = sorted_array[0]
+        max_score = max_data[1]
+        max_len_path = 0
+        count = {}
+
+        for path, value in sorted_array:
+            try:
+                count[value] += 1
+            except:
+                count[value] = 0
+        if count[max_score] > 1:
+            for path, value in sorted_array:
+                if value == max_score and len(path) > max_len_path:
+                    final_max = (path, value)
+        else:
+            final_max = max_data
+
+        return final_max
+
+    def insert(self, value):
+        self.items.append(value)
+        return self.items
+
+    def get(self):
+        return self.items
+
+    def isEmpty(self):
+        return len(self.items) == 0
+
+    def len(self):
+        return len(self.items)
+
+    def getSorted(self):
+        return sorted(self.items, key = lambda x:x[1])
 
 class AStarAgent(Agent):
     # Initialization Function: Called one time when the game starts
@@ -161,5 +199,57 @@ class AStarAgent(Agent):
 
     # GetAction Function: Called with every frame
     def getAction(self, state):
-        # TODO: write A* Algorithm instead of returning Directions.STOP
-        return Directions.STOP
+        # stores the first action for all the nodes, ex: {<gameStateInstance> : <action>}
+        base_action = {}
+        max_score = 0
+        max_state = state
+
+        open_list = priorityQueue()
+        closed_list = priorityQueue()
+
+        open_list.insert(([state], 0))
+
+        while (not open_list.isEmpty()):
+            current_value = open_list.pop()
+            current_path = current_value[0]
+            last_visited_state = current_path[-1]
+
+            # g(x) = depth, root node is depth 0, depth for each successor will be length of it's parent path
+            g_cost = len(current_path)
+
+            if last_visited_state.isWin():
+                return Directions.STOP
+
+            # get all legal actions for pacman
+            legal = last_visited_state.getLegalPacmanActions()
+
+            # get successor states for each action
+            for action in legal:
+                successor = last_visited_state.generatePacmanSuccessor(action)
+                if successor == None:
+                    break
+                if successor.isLose():
+                    continue
+                new_path = current_path + [successor]
+
+                new_score = scoreEvaluation(successor)
+
+                h_cost = - (scoreEvaluation(successor) - scoreEvaluation(state))
+
+                total_cost = g_cost + h_cost
+                new_data = (new_path, total_cost)
+
+                open_list.insert(new_data)
+
+                # base action for current state is same as the base action for parent state
+                try:
+                    base_action[successor] = base_action[last_visited_state]
+                except:
+                    base_action[successor] = action
+
+                if new_score > max_score:
+                    max_score = new_score
+                    max_state = successor
+
+        return base_action[max_state]
+
